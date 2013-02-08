@@ -1,0 +1,47 @@
+Notes:
+
+Just what the heck is included w/ the mt:ebk limit?
+
+include:	mt:ebk	ebook
+exclude: 	-mt:gpb	government publication (includes igp, ngp, sgp, lgp) (international, national, state, local)
+			-mt:cnp	conference publication
+			-mt:deg	thesis or dissertation
+			
+consider excluding?:
+			-mt:upw	continually updating website
+			-mt:upb	continually updating database
+			-mt:cdc	computer file: cd rom
+			-mt:dct	computer file: document
+			
+SRU CQL syntax:
+	boolean + srw.x + any/all/exact + %22x%22 
+
+Opensearch: search only KW indexes, return ATOM or RSS formated results
+Opensearch + SRU: search all indexes and return ATOM or RSS formatted results
+SRU: search all indexes and return MARC or XML results
+
+What this project is:
+
+Non-jargon:
+	1. Come up with a search string that will find ebooks without unwanted junk results.
+	2. Write a script that will combine the user's search terms with this string and format it so WorldCat can parse it.
+	3. Get results from Worldcat and format in a user-friendly package.
+	4. Deliver all of the above in a mobile-friendly package.
+
+With Jargon:
+	1. Format a Boolean search query that will return only items a "normal" patron would call ebooks in Worldcatlocal.
+	2. Write a PHP script to combine this query with user-supplied keywords and send it to WorldCat using Opensearch and SRU standards.
+	3. Tell Worldcat to return data formatted in RSS. Turn the RSS into user-friendly text.
+	4. Use the jQuery Mobile framework to make it all look nice on tablets, phones, and on normal computer screens.
+		
+symbols: 
+ws2	--	WSU'couv \\ Search ONLY ws2 (symbols are limits and cannot be combined w. Boolean OR operators.)
+\\ nte	--	WSU
+\\ nteg --	WSU ebooks? \\doesn't seem to be a real OCLC symbol?
+\\ OCADD -- Orbis Cascade Alliance Demand Driven
+\\ OCACL -- Orbis Cascade Alliance Collections
+
+roving pw:RZFY6
+
+trial url: IT WORKS!!!
+http://www.worldcat.org/webservices/catalog/search/worldcat/opensearch?q=srw.kw+any+%22biofuel%22+and+srw.li+any+%22ws2%22+and+srw.mt+any+%22ebk%22+not+srw.mt+any+%22gpb%22+not+srw.mt+any+%22cnp%22+not+srw.mt+any+%22deg%22&format=rss&cformat=chicago&wskey=6ACsgajYuGZI77QFqh32LdId8J6yWAvhLGbTF0MaCfHzLYbF4EnOPDLpbG27hAifTp7UxfiC3uue4CZD
